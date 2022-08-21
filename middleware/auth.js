@@ -6,7 +6,7 @@ const authenticationMiddleware=async(req,res,next)=>{
 
     if(!authHeader || !authHeader.startsWith('Bearer '))
     {
-        throw new UnauthenticatedError('No Token')
+        throw new UnauthenticatedError('No Token Provided')
     }
 
     const token=authHeader.split(' ')[1]
@@ -17,7 +17,7 @@ const authenticationMiddleware=async(req,res,next)=>{
        req.user={id,username}
        next()
     } catch (error) {
-        throw new UnauthenticatedError('No Token')
+        throw new UnauthenticatedError('No Token Provided')
     }
 }
 
